@@ -19,12 +19,15 @@ require 'restclient'
 #
 # Regardless, you MUST follow the acces request process posted on the above DevCentral link.
 
+puts "site URL:"
+site_url = gets.chomp
+ 
 puts "consumer key:"
 consumer_key = gets.chomp
  
 opts={
     consumer_key:       consumer_key,
-    site:               'https://jira.disney.com/',
+    site:               site_url,
     scheme:             :header,
     http_method:        :post,
     signature_method:   'RSA-SHA1',
@@ -120,7 +123,7 @@ end
 #end
  
 # Once you have your access token we can test some REST calls
-#fullpath = "https://jira.disney.com/rest/api/2/project"
+#fullpath = "#{site_url}/rest/api/2/project"
 #begin
 #	puts RestClient.get(fullpath)
 #rescue
